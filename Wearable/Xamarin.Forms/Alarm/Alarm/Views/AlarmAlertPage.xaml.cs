@@ -53,7 +53,8 @@ namespace Alarm.Views
                 Console.WriteLine($"AlarmAlertPage received LanguageChanged");
                 // Update text that has been translated into the current language.
                 TimeLabel.Text = _viewModel.Record.ScheduledDateTime.ToString("hh:mm tt");
-                DismissButton.Text = AppResources.Dismiss;
+                Dismiss1hrBtn.Text = AppResources.Dismiss1hr;
+                Dismiss30mBtn.Text = AppResources.Dismiss30m;
             });
         }
 
@@ -66,7 +67,8 @@ namespace Alarm.Views
         {
             Console.WriteLine("OnDismissButtonClicked()");
 
-            _viewModel.Dismiss();
+            TimeSpan.TryParse((sender as Button).CommandParameter?.ToString(), out TimeSpan snoozeTime);
+            _viewModel.Dismiss(snoozeTime);
             await Navigation.PopAsync();
         }
 
@@ -79,7 +81,7 @@ namespace Alarm.Views
         {
             Console.WriteLine("[AlarmAlertPage]  OnBackButtonPressed PopAsync");
 
-            _viewModel.Dismiss();
+            _viewModel.Dismiss(null);
             return base.OnBackButtonPressed();
         }
     }

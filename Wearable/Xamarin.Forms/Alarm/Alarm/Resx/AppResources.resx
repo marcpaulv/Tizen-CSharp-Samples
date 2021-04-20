@@ -136,9 +136,12 @@
     <value>Alarm set</value>
     <comment>Alarm set</comment>
   </data>
-  <data name="Dismiss" xml:space="preserve">
-    <value>Dismiss</value>
+  <data name="Dismiss1hr" xml:space="preserve">
+    <value>Dismiss 1hr</value>
     <comment>Dismiss text</comment>
+  </data>
+  <data name="Dismiss30m" xml:space="preserve">
+    <value>Dismiss 30 mins</value>
   </data>
   <data name="FromNow" xml:space="preserve">
     <value>from now</value>
