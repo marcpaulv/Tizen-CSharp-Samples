@@ -16,6 +16,7 @@
 
 using Alarm.Implements;
 using Alarm.Models;
+using System;
 
 namespace Alarm.ViewModels
 {
@@ -93,7 +94,7 @@ namespace Alarm.ViewModels
         /// <summary>
         /// Delete current AlarmRecord
         /// </summary>
-        public void Dismiss(System.TimeSpan? snoozeTime)
+        public void Dismiss()
         {
             AlarmNativeHandler.StopSound();
             AlarmNativeHandler.StopVibration();
@@ -104,15 +105,22 @@ namespace Alarm.ViewModels
                 return;
             }
 
-            if (snoozeTime == null)
+            AlarmModel.DeleteAlarm(_alarmRecord);
+        }
+
+        internal void Snooze(TimeSpan snoozeTime)
+        {
+            AlarmNativeHandler.StopSound();
+            AlarmNativeHandler.StopVibration();
+            _alertSoundState = SoundState.Stop;
+
+            if (_alarmRecord == null)
             {
-                AlarmModel.DeleteAlarm(_alarmRecord);
+                return;
             }
-            else
-            {
-                _alarmRecord.ScheduledDateTime = _alarmRecord.ScheduledDateTime.AddSeconds(snoozeTime.Value.TotalSeconds);
-                AlarmModel.UpdateAlarm(_alarmRecord);
-            }
+
+            _alarmRecord.ScheduledDateTime = _alarmRecord.ScheduledDateTime.AddSeconds(snoozeTime.TotalSeconds);
+            AlarmModel.UpdateAlarm(_alarmRecord);
         }
     }
 }

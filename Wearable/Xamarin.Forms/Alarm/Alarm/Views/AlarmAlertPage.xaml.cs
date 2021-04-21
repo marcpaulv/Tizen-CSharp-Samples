@@ -68,7 +68,7 @@ namespace Alarm.Views
             Console.WriteLine("OnDismissButtonClicked()");
 
             TimeSpan.TryParse((sender as Button).CommandParameter?.ToString(), out TimeSpan snoozeTime);
-            _viewModel.Dismiss(snoozeTime);
+            _viewModel.Snooze(snoozeTime);
             await Navigation.PopAsync();
         }
 
@@ -81,7 +81,7 @@ namespace Alarm.Views
         {
             Console.WriteLine("[AlarmAlertPage]  OnBackButtonPressed PopAsync");
 
-            _viewModel.Dismiss(null);
+            _viewModel.Dismiss();
             return base.OnBackButtonPressed();
         }
     }
