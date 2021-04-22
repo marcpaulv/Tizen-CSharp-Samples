@@ -13,35 +13,28 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<w:CirclePage.Content>
-		<AbsoluteLayout BackgroundColor="Black">
+		<FlexLayout JustifyContent="Center" Direction="Column"  BackgroundColor="Black">
 			<Image
 				x:Name="AlarmRingImg"
-				AbsoluteLayout.LayoutBounds="133, 10, 94, 94"
-				AbsoluteLayout.LayoutFlags="None"
+				
 				Source="alarm_ringing_icon.png" />
 			<Label
 				x:Name="TimeLabel"
-				AbsoluteLayout.LayoutBounds="0, 120, 360, 45"
-				AbsoluteLayout.LayoutFlags="None"
 				FontSize="12"
 				HorizontalTextAlignment="Center"
 				Text="{Binding Record.ScheduledDateTime, Converter={StaticResource TimeConverter}}"
 				TextColor="White" />
             <Button Text="{x:Static resx:AppResources.Dismiss1hr}"
                     Clicked="OnDismissButtonClicked"
-                    CommandParameter="00:01:00"
-                    AbsoluteLayout.LayoutBounds="0, 200, 360, 45"
-				AbsoluteLayout.LayoutFlags="None"
+                    CommandParameter="01:00:00"
 				FontSize="12"
                     x:Name="Dismiss1hrBtn"></Button>
 
             <Button Text="{x:Static resx:AppResources.Dismiss30m}"
-                    AbsoluteLayout.LayoutBounds="0, 275, 360, 45"
-				AbsoluteLayout.LayoutFlags="None"
-                    CommandParameter="00:00:30"
+                    CommandParameter="00:30:00"
 				FontSize="12"
                     Clicked="OnDismissButtonClicked" x:Name="Dismiss30mBtn"></Button>
-        </AbsoluteLayout>
+        </FlexLayout>
         
 	</w:CirclePage.Content>
     
