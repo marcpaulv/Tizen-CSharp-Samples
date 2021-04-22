@@ -44,7 +44,7 @@ namespace Alarm.Views
 
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
-
+            
             _viewModel.StartAlert();
 
             // Subscribe notification of locale changes to update text based on locale
