@@ -25,7 +25,7 @@
 				TextColor="White" />
 
             <Button Text="{x:Static resx:AppResources.Dismiss30m}"
-                    CommandParameter="00:00:30"
+                    CommandParameter="00:30:00"
 					Margin="10"
                     FontSize="12"
                     Clicked="OnDismissButtonClicked" x:Name="Dismiss30mBtn"></Button>
